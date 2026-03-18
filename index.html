@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 3 மாத AI கற்றல் பயணம் | தமிழ்வழி | 12 வாரங்கள்</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(175deg, #d4e0f0 0%, #7fa9c4 100%);
+            font-family: 'Segoe UI', 'Tamil', 'Latha', 'Helvetica Neue', sans-serif;
+            padding: 30px 15px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION - புதிய பயிற்றுநர் தகவல்களுடன் ===== */
+        .hero-section {
+            background: rgba(240, 248, 255, 0.9);
+            backdrop-filter: blur(14px);
+            border-radius: 80px 80px 80px 20px;
+            padding: 40px 40px;
+            box-shadow: 0 30px 50px -15px #2a4b63, 0 0 0 4px #5a9ec2 inset;
+            border-left: 12px solid #b85e2c;
+            border-right: 12px solid #1d6275;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .hero-content {
+            flex: 2;
+        }
+
+        .hero-main-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #0a2f4a, #1e6b9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-sub-title {
+            background: #264e5e;
+            color: #fee69c;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-size: 1.9rem;
+            display: inline-block;
+            margin: 20px 0 15px;
+            border: 4px solid #f0b341;
+        }
+
+        /* ===== புதிய பயிற்றுநர் பகுதி ===== */
+        .trainer-info {
+            background: #1e4b6b;
+            border-radius: 60px;
+            padding: 20px 30px;
+            margin: 20px 0;
+            border: 4px solid #eaa737;
+            box-shadow: 0 8px 0 #0f3447;
+        }
+
+        .advisor-chip {
+            background: #f0b843;
+            color: #1e3b4f;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            border: 3px solid #ffffff;
+        }
+
+        .qualification-box {
+            background: #0a2f4a;
+            color: #ffd58c;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            margin: 10px 0;
+            border-left: 10px solid #f0b843;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .position-box {
+            background: #2d7ca0;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            border: 3px solid #ffd58c;
+        }
+
+        /* ===== வலப்பக்கத்தில் வட்ட வடிவில் இயங்கும் ஒளிப்படம் ===== */
+        .profile-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 220px;
+        }
+
+        .profile-glow {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glow-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,165,0,0) 70%);
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 8px solid #f0b843;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 30px #febf5e;
+            background-color: #e0c4a0;
+        }
+
+        .profile-badge {
+            background: #f0b843;
+            color: #1e3b4f;
+            padding: 8px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: 15px;
+            border: 3px solid white;
+            box-shadow: 0 5px 0 #9e671f;
+        }
+
+        /* ===== மாதப் பிரிவு (Month Tabs) ===== */
+        .month-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 35px 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .month-btn {
+            background: #2b4857;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.8rem;
+            border-radius: 70px;
+            cursor: pointer;
+            border: 3px solid #e5a742;
+            box-shadow: 0 10px 0 #15313d;
+            font-weight: bold;
+            transition: 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .month-btn.active {
+            background: #cf7b2b;
+            color: #1d2800;
+            border-color: #ffd966;
+            box-shadow: 0 8px 0 #75471b;
+            transform: translateY(4px);
+        }
+
+        /* ===== வார அட்டைகள் (Week Cards) ===== */
+        .weeks-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .week-card {
+            background: rgba(240, 248, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 90px 20px 90px 20px;
+            padding: 20px 30px;
+            border-left: 18px solid;
+            box-shadow: 0 20px 25px -12px #2e5a7a, 0 0 0 2px #a3c6e9 inset;
+        }
+
+        .week-card[data-month="1"] { border-left-color: #a3512b; }
+        .week-card[data-month="2"] { border-left-color: #1f7a5c; }
+        .week-card[data-month="3"] { border-left-color: #3f6b9c; }
+
+        .week-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .week-badge {
+            background: #3f2d15;
+            color: #ffda8b;
+            min-width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            border: 5px solid #f0b843;
+            box-shadow: 0 12px 0 #2b1c0b;
+        }
+
+        .week-badge span {
+            font-size: 1rem;
+            background: #b67b30;
+            color: black;
+            padding: 4px 15px;
+            border-radius: 50px;
+            margin-top: 5px;
+        }
+
+        .week-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0a2f4a;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .week-desc {
+            font-size: 1.2rem;
+            margin: 12px 0 8px;
+            padding-left: 10px;
+            color: #1e3b4f;
+        }
+
+        .toggle-btn {
+            font-size: 2.8rem;
+            color: #aa5622;
+            cursor: pointer;
+            margin-left: auto;
+            transition: 0.2s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.3);
+            color: #d1712a;
+        }
+
+        .week-expand {
+            display: none;
+            background: #e9f0fa;
+            border-radius: 60px;
+            padding: 30px 35px;
+            margin-top: 30px;
+            border: 4px dashed #4f8bbf;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .day-box {
+            background: #ffffff;
+            border-radius: 35px;
+            padding: 20px 15px;
+            border: 3px solid #2d7ca0;
+            box-shadow: 0 7px 0 #1b4b64;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .day-box h4 {
+            background: #1e5a7a;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .day-box ul {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .day-box li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #2d7ca0;
+            display: flex;
+            gap: 10px;
+            color: #1a3a4f;
+        }
+
+        .day-video-btn {
+            background: #1e5a7a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px solid #ffd58c;
+            box-shadow: 0 4px 0 #0f3447;
+            transition: 0.1s;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .day-video-btn:hover {
+            background: #2d7ca0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #0f3447;
+        }
+
+        .test-section {
+            background: #283d47;
+            color: #ffe3a7;
+            padding: 25px 30px;
+            border-radius: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 4px solid #e8b45a;
+        }
+
+        .test-icon {
+            font-size: 2.5rem;
+        }
+
+        .pill-note {
+            background: #37281a;
+            color: #ffc491;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 600;
+        }
+
+        .tips-footer {
+            background: #0a2f4a;
+            border-radius: 80px 80px 30px 30px;
+            padding: 50px 40px;
+            margin: 60px 0 30px;
+            border: 6px solid #c79b4d;
+            color: #ffd58c;
+        }
+
+        .tips-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tip-item {
+            background: #1e4b6b;
+            padding: 20px 35px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-left: 15px solid #eba052;
+        }
+
+        .footer-contact {
+            background: #1e4b6b;
+            border-radius: 60px;
+            padding: 25px 35px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            border: 4px solid #b27a38;
+            color: #fbdd9b;
+            font-size: 1.4rem;
+        }
+
+        .quantum-badge {
+            background: #4a1e6b;
+            color: #ffd966;
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 1rem;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="master-container">
+
+    <!-- HERO SECTION - புதிய பயிற்றுநர் தகவல்களுடன் -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-main-title">
+                <i class="fas-robot"></i> செயற்கை நுண்ணறிவுக் கருவிகளின் பயன்பாடு
+            </div>
+            <div class="hero-sub-title">
+                <i class="fas fa-calendar-alt"></i> 3 மாதங்கள் · 12 வாரங்கள் · வாரத்திற்கு 3 மணிநேரம்
+            </div>
+            
+            <!-- பயிற்றுநர் விவரங்கள் (புதியது) -->
+            <div class="trainer-info">
+                <!-- பயிற்றுநர் பெயர் -->
+                <div class="advisor-chip">
+                    <i class="fas fa-crown"></i> 
+                    பயிற்றுநர்: முனைவர் சத்தியராஜ் தங்கச்சாமி கல்.இ., க.மு. (தமிழ்), க.மு. (மொழியியல்), ஆ.நி., த.ப.ப., பர்., (நேயக்கோ)
+                </div>
+                
+                <!-- பட்டங்கள் -->
+                <div class="qualification-box">
+                    <i class="fas fa-graduation-cap"></i> 
+                    Dr. Sathiyaraj Thangasamy (Neyakkoo) B.Lit., M.A. (Tamil), M.A. (Linguistics), M.Phil., TPT., Ph.D., NET.,
+                </div>
+                
+                <!-- பதவி விவரம் -->
+                <div class="position-box">
+                    <i class="fas fa-briefcase"></i>
+                    Coach & Distributor, MiLifeStyle Marketing Global Pvt. Ltd.
+                    <i class="fas fa-check-circle"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- வலப்பக்கத்தில் வட்ட வடிவில் இயங்கும் ஒளிப்படம் -->
+        <div class="profile-container">
+            <div class="profile-glow">
+                <div class="glow-effect"></div>
+                <img src="https://raw.githubusercontent.com/neyakkoot/Direct_Selling_Course/main/Sathiyaraj.png"
+                     alt="Dr. Sathiyaraj Thangasamy"
+                     class="profile-img"
+                     onerror="this.style.display='none'; this.parentElement.style.display='none';">
+            </div>
+            <div class="profile-badge">
+                <i class="fas fa-star"></i> பயிற்றுநர் <i class="fas fa-star"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- மாதத் தேர்வு பொத்தான்கள் -->
+    <div class="month-tabs">
+        <button class="month-btn active" data-month="1"><i class="fas fa-graduation-cap"></i> முதல் மாதம்: கற்றல்</button>
+        <button class="month-btn" data-month="2"><i class="fas fa-chalkboard"></i> இரண்டாம் மாதம்: கற்பித்தல்</button>
+        <button class="month-btn" data-month="3"><i class="fas fa-microscope"></i> மூன்றாம் மாதம்: ஆய்வு</button>
+    </div>
+
+    <!-- 12 வார அட்டவணை இங்கே ஜாவாஸ்கிரிப்ட் மூலம் நிரப்பப்படும் -->
+    <div id="weeksContainer" class="weeks-grid"></div>
+
+    <!-- கற்றல் குறிப்புகள் -->
+    <div class="tips-footer">
+        <div style="text-align: center; font-size: 2.5rem; margin-bottom: 30px;"><i class="fas fa-lightbulb"></i> AI கற்றலுக்கான முக்கிய குறிப்புகள் <i class="fas fa-lightbulb"></i></div>
+        <div class="tips-grid">
+            <div class="tip-item"><i class="fas fa-comment-dots fa-2x"></i> Prompt Engineering: தெளிவான கட்டளைகள் முக்கியம். Role-play முறையில் கேளுங்கள்.</div>
+            <div class="tip-item"><i class="fas fa-balance-scale fa-2x"></i> AI பதில்களை விமர்சன ரீதியாக ஆராயுங்கள். 100% நம்ப வேண்டாம்.</div>
+            <div class="tip-item"><i class="fas fa-database fa-2x"></i> தரவு பகுப்பாய்வில் AI உதவியுடன் Excel/Python குறியீடு எழுதிப் பழகுங்கள்.</div>
+            <div class="tip-item"><i class="fas fa-book-open fa-2x"></i> NotebookLM-ல் ஆய்வுக் கட்டுரைகளை ஏற்றி Audio Overview கேட்டுப் பழகுங்கள்.</div>
+        </div>
+    </div>
+
+    <!-- தொடர்பு -->
+    <div class="footer-contact">
+        <span><i class="fas fa-phone-alt"></i> +91 9600370671</span>
+        <span><i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp</span>
+        <span><i class="fas fa-envelope"></i> sathiyarajkkt@gmail.com</span>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 12 வாரங்களுக்கான முழுத் தரவு (AI Syllabus) ----------
+        const weekDetails = [
+            { // வாரம் 1
+                month:1, title:"AI அறிமுகம் & நெறிமுறைகள்", icon:"🤖",
+                desc:"LLMs அறிமுகம், ChatGPT, Gemini, DeepSeek கணக்குகள்",
+                days:[
+                    "AI என்றால் என்ன? LLMs (Large Language Models) செயல்பாடு",
+                    "ChatGPT, Gemini, DeepSeek கணக்குகளை உருவாக்குதல்",
+                    "Prompt Engineering - அடிப்படை கட்டளைகள்",
+                    "Role-playing & Context setting பயிற்சி",
+                    "என் துறையில் AI எவ்வாறு பயன்படுத்தப்படுகிறது? - விவாதம்"
+                ],
+                test:"மூன்று AI கருவிகளுக்கும் ஒரே கேள்வியைக் கேட்டு பதில்களை ஒப்பிடுக."
+            },
+            { // வாரம் 2
+                month:1, title:"Prompt Engineering", icon:"⚡",
+                desc:"சிறந்த கட்டளைகள் எழுதும் கலை",
+                days:[
+                    "தெளிவான கட்டளைகள் (Prompts) எழுதும் நுட்பங்கள்",
+                    "Context setting மற்றும் Constraints வழங்குதல்",
+                    "Chain-of-thought prompting முறை",
+                    "ஒரே கேள்வியை வெவ்வேறு AI-யில் கேட்டு ஒப்பீடு",
+                    "சிக்கலான கருத்தை AI மூலம் எளிமைப்படுத்துதல்"
+                ],
+                test:"5 வெவ்வேறு வகையான Prompts எழுதி AI-யின் பதில்களை பகுப்பாய்வு செய்க."
+            },
+            { // வாரம் 3
+                month:1, title:"AI உதவியுடன் கற்றல்", icon:"📚",
+                desc:"தனிப்பட்ட பயிற்சியாளராக AI",
+                days:[
+                    "AI-ஐ தனிப்பட்ட பயிற்சியாளராக (Personal Tutor) பயன்படுத்துதல்",
+                    "YouTube/கட்டுரைகளை AI-க்கு கொடுத்து சுருக்கம் எழுதச் சொல்லுதல்",
+                    "சந்தேகங்களை AI-யிடம் கேட்டுத் தீர்த்தல்",
+                    "கஷ்டமான தலைப்புகளை AI உதவியுடன் கற்றல்",
+                    "AI உதவியுடன் குறிப்பெடுத்தல் (Note-taking)"
+                ],
+                test:"உங்கள் துறையில் ஒரு கடினமான தலைப்பை AI உதவியுடன் கற்று விளக்குக."
+            },
+            { // வாரம் 4
+                month:1, title:"NotebookLM - ஆய்வுக் குறிப்பேடு", icon:"📓",
+                desc:"Google-ன் AI ஆய்வுக் கருவி",
+                days:[
+                    "NotebookLM அறிமுகம் - ஆவணங்களை ஏற்றுதல்",
+                    "ஆவணங்களின் அடிப்படையில் கேள்வி பதில் பெறுதல்",
+                    "Audio Overview (பாட்காஸ்ட்) உருவாக்குதல்",
+                    "பல ஆதாரங்களை ஒருங்கிணைத்து ஆய்வு செய்தல்",
+                    "NotebookLM-ஐ ஆய்வுக் கட்டுரைகளுக்குப் பயன்படுத்துதல்"
+                ],
+                test:"3 ஆய்வுக் கட்டுரைகளை NotebookLM-ல் ஏற்றி, அவற்றின் அடிப்படையில் ஒரு பாட்காஸ்ட் உருவாக்குக."
+            },
+            // வாரம் 5 (2ம் மாதம் - கற்பித்தல்)
+            { month:2, title:"OBE பாடத்திட்ட வடிவமைப்பு", icon:"📋",
+                desc:"AI உதவியுடன் பாடத்திட்டம் உருவாக்கம்",
+                days:[
+                    "OBE (Outcome Based Education) அறிமுகம்",
+                    "பாட நோக்கங்கள் (COs) AI மூலம் உருவாக்குதல்",
+                    "கற்றல் விளைவுகள் (LOs) AI மூலம் வடிவமைத்தல்",
+                    "12 வார பாடத்திட்டத்தை AI உதவியுடன் உருவாக்குதல்",
+                    "உருவாக்கப்பட்ட பாடத்திட்டத்தை விமர்சன ரீதியாக ஆய்வு செய்தல்"
+                ],
+                test:"உங்கள் பாடத்திற்கான 12 வார OBE பாடத்திட்டத்தை AI உதவியுடன் உருவாக்குக."
+            },
+            { month:2, title:"கற்பித்தல் உள்ளடக்கம் உருவாக்கம்", icon:"🎨",
+                desc:"AI மூலம் Slides, Quiz, Case Studies",
+                days:[
+                    "AI மூலம் பவர்பாய்ண்ட் ஸ்லைடுகளுக்கான உள்ளடக்கம் தயாரித்தல்",
+                    "வினாடி வினாக்கள் (Quizzes) உருவாக்குதல்",
+                    "வழக்கு ஆய்வுகள் (Case Studies) உருவாக்குதல்",
+                    "விளக்கப்படங்கள் மற்றும் எடுத்துக்காட்டுகள் உருவாக்குதல்",
+                    "பல்வேறு கற்பித்தல் பாணிகளுக்கான உள்ளடக்கம்"
+                ],
+                test:"ஒரு தலைப்பிற்கான முழுமையான கற்பித்தல் தொகுப்பை AI உதவியுடன் உருவாக்குக."
+            },
+            { month:2, title:"AI-உதவியுடன் மதிப்பீடு", icon:"✅",
+                desc:"தானியங்கி மதிப்பீடு, Feedback",
+                days:[
+                    "தானியங்கி விடைத்தாள் மதிப்பீடு (Automated Grading)",
+                    "AI-க்கு ரூப்ரிக்ஸ் (Rubrics) வழங்குதல்",
+                    "மாணவர் பதில்களுக்கு AI மூலம் கருத்து (Feedback) வழங்குதல்",
+                    "AI கொடுத்த மதிப்பெண்களை நாமே சரிபார்த்தல்",
+                    "AI-யின் பக்கச்சார்பு (Bias) குறித்து விவாதித்தல்"
+                ],
+                test:"5 மாணவர் பதில்களை AI-க்கு கொடுத்து மதிப்பெண் வழங்கச் சொல்லி, அதை நீங்களே சரிபார்க்கவும்."
+            },
+            { month:2, title:"AI-ன் நெறிமுறைகள் & வரம்புகள்", icon:"⚖️",
+                desc:"Plagiarism, Copyright, Bias",
+                days:[
+                    "மாணவர்கள் AI-யில் செய்யும் மோசடி (Plagiarism)",
+                    "AI-ஐ கண்டறியும் கருவிகள் (AI Detectors)",
+                    "AI-யில் பதிப்புரிமை (Copyright) பிரச்சனைகள்",
+                    "AI-யின் தரவு பாதுகாப்பு மற்றும் தனியுரிமை",
+                    "AI-யை தடை செய்வதா? கட்டுப்பாடுகளுடன் அனுமதிப்பதா? - விவாதம்"
+                ],
+                test:"AI நெறிமுறைகள் குறித்த 5 நிமிட விளக்கக்காட்சி தயாரிக்கவும்."
+            },
+            // வாரம் 9 (3ம் மாதம் - ஆய்வு)
+            { month:3, title:"இலக்கியத் தேடலுக்கான AI", icon:"🔍",
+                desc:"Elicit, Consensus.app, Research Rabbit",
+                days:[
+                    "ஆய்வுக் கட்டுரைகளைத் தேட AI கருவிகள் (Elicit, Consensus)",
+                    "இலக்கியத் தேடலுக்கான சிறந்த Promptகள்",
+                    "தொடர்புடைய ஆய்வுக் கட்டுரைகளை AI மூலம் திரட்டுதல்",
+                    "ஆய்வுக் கட்டுரைகளின் சுருக்கத்தை AI மூலம் எழுதுதல்",
+                    "AI-ஆல் பரிந்துரைக்கப்பட்ட கட்டுரைகளை மதிப்பீடு செய்தல்"
+                ],
+                test:"உங்கள் ஆய்வுத் தலைப்புக்கு தொடர்புடைய 10 முக்கிய ஆய்வுக் கட்டுரைகளை AI மூலம் திரட்டி சுருக்கம் எழுதுக."
+            },
+            { month:3, title:"தரவு பகுப்பாய்வு & காட்சிப்படுத்தல்", icon:"📊",
+                desc:"AI உதவியுடன் Excel/Python குறியீடு",
+                days:[
+                    "AI உதவியுடன் Excel சூத்திரங்கள் எழுதுதல்",
+                    "Python குறியீடு AI மூலம் உருவாக்குதல்",
+                    "தரவுகளை பகுப்பாய்வு செய்தல்",
+                    "விளக்கப்படங்கள் (Charts) உருவாக்குதல்",
+                    "புள்ளிவிவர பகுப்பாய்வுக்கு AI உதவியுடன் குறியீடு எழுதுதல்"
+                ],
+                test:"ஒரு CSV கோப்பை AI-க்கு கொடுத்து, அதிலிருந்து விளக்கப்படங்கள் உருவாக்குவதற்கான குறியீடு எழுதச் சொல்லவும்."
+            },
+            { month:3, title:"ஆய்வு எழுத்து & மேற்கோள்", icon:"✍️",
+                desc:"Abstract எழுதுதல், மொழிபெயர்ப்பு, Citations",
+                days:[
+                    "ஆய்வுக் கட்டுரையின் சுருக்கம் (Abstract) AI மூலம் எழுதுதல்",
+                    "AI மூலம் மொழிபெயர்ப்பு - தமிழ்/ஆங்கிலம்",
+                    "மேற்கோள் மேலாண்மை (Zotero/Mendeley உடன் AI இணைப்பு)",
+                    "AI மூலம் உரையை மேம்படுத்துதல் (Paraphrasing)",
+                    "ஆய்வு அறிக்கை தயாரித்தல்"
+                ],
+                test:"உங்கள் ஆய்வுக் கட்டுரையின் ஒரு பகுதியை AI உதவியுடன் மேம்படுத்தி, மேற்கோள்களைச் சேர்க்கவும்."
+            },
+            { month:3, title:"குவாண்டம் கம்ப்யூட்டிங் & AI", icon:"⚛️",
+                desc:"குவாண்டம் AI (QAI) எதிர்காலம்",
+                days:[
+                    "குவாண்டம் கம்ப்யூட்டிங் அடிப்படைகள் (Superposition, Entanglement)",
+                    "குவாண்டம் AI (QAI) - மருந்து கண்டுபிடிப்பு, பொருளறிவியல்",
+                    "IBM Quantum Experience அறிமுகம்",
+                    "குவாண்டம் கணினியின் எதிர்கால தாக்கம்",
+                    "5 ஆண்டுகளில் AI எவ்வாறு மாறும்? - கட்டுரை"
+                ],
+                test:"குவாண்டம் கம்ப்யூட்டிங் AI-ஐ எவ்வாறு மாற்றும்? 500 வார்த்தை கட்டுரை எழுதுக."
+            }
+        ];
+
+        function getVideoLink(weekNum, dayIdx) {
+            const baseURL = "https://www.youtube.com/results?search_query=";
+            const searchTerms = [
+                "ai+introduction+tamil",
+                "prompt+engineering+tutorial+tamil",
+                "ai+for+learning+tamil",
+                "notebooklm+tutorial+tamil",
+                "obe+curriculum+design+ai+tamil",
+                "ai+for+teaching+tamil",
+                "ai+assessment+grading+tamil",
+                "ai+ethics+plagiarism+tamil",
+                "ai+literature+review+tamil",
+                "data+analysis+ai+tamil",
+                "ai+research+writing+tamil",
+                "quantum+computing+ai+tamil"
+            ];
+            
+            if (weekNum >= 1 && weekNum <= searchTerms.length) {
+                return baseURL + searchTerms[weekNum-1];
+            }
+            return "https://www.youtube.com/results?search_query=ai+tools+tamil";
+        }
+
+        const container = document.getElementById('weeksContainer');
+        
+        function renderWeeks(monthFilter = 1) {
+            container.innerHTML = '';
+            const filteredWeeks = weekDetails.filter(w => w.month === monthFilter);
+            
+            filteredWeeks.forEach((w, idx) => {
+                const globalWeekNum = weekDetails.findIndex(item => item === w) + 1;
+                
+                const card = document.createElement('div');
+                card.className = 'week-card';
+                card.setAttribute('data-month', w.month);
+
+                const header = document.createElement('div');
+                header.className = 'week-header';
+
+                const badge = document.createElement('div');
+                badge.className = 'week-badge';
+                badge.innerHTML = `<div>${globalWeekNum}</div><span>வாரம்</span>`;
+
+                const titleWrap = document.createElement('div');
+                titleWrap.style.flex = '1';
+                const title = document.createElement('div');
+                title.className = 'week-title';
+                
+                let quantumBadge = '';
+                if (globalWeekNum === 12) {
+                    quantumBadge = '<span class="quantum-badge"><i class="fas fa-atom"></i> குவாண்டம் சிறப்பு</span>';
+                }
+                
+                title.innerHTML = `${w.icon} ${w.title} <span style="background:#1e5a7a; padding:5px 18px; border-radius:40px; font-size:1.1rem; color:white;">மாதம் ${w.month}</span> ${quantumBadge}`;
+                
+                const desc = document.createElement('div');
+                desc.className = 'week-desc';
+                desc.innerText = w.desc;
+                titleWrap.appendChild(title);
+                titleWrap.appendChild(desc);
+
+                const toggle = document.createElement('div');
+                toggle.className = 'toggle-btn';
+                toggle.innerHTML = '➕';
+
+                header.appendChild(badge);
+                header.appendChild(titleWrap);
+                header.appendChild(toggle);
+                card.appendChild(header);
+
+                const expand = document.createElement('div');
+                expand.className = 'week-expand';
+
+                const daysGrid = document.createElement('div');
+                daysGrid.className = 'days-grid';
+                for (let d = 0; d < 5; d++) {
+                    const dayBox = document.createElement('div');
+                    dayBox.className = 'day-box';
+                    const videoURL = getVideoLink(globalWeekNum, d);
+                    
+                    dayBox.innerHTML = `
+                        <h4><i class="fas fa-robot"></i> நாள் ${d+1}</h4>
+                        <ul><li><i class="fas fa-check-circle" style="color:#1e5a7a;"></i> ${w.days[d]}</li></ul>
+                        <a href="${videoURL}" target="_blank" class="day-video-btn"><i class="fas fa-video"></i> காணொலி & பயிற்சி</a>
+                    `;
+                    daysGrid.appendChild(dayBox);
+                }
+
+                const testDiv = document.createElement('div');
+                testDiv.className = 'test-section';
+                testDiv.innerHTML = `
+                    <div class="test-icon"><i class="fas fa-pencil-alt fa-2x"></i></div>
+                    <div><strong style="font-size:1.6rem;">📆 வாரத் தேர்வு</strong><br>${w.test}</div>
+                    <div class="pill-note"><i class="fas fa-check-double"></i> மீள்பார்வை செய்க</div>
+                `;
+
+                expand.appendChild(daysGrid);
+                expand.appendChild(testDiv);
+                card.appendChild(expand);
+
+                container.appendChild(card);
+
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (expand.style.display === 'none' || expand.style.display === '') {
+                        expand.style.display = 'block';
+                        toggle.innerHTML = '➖';
+                    } else {
+                        expand.style.display = 'none';
+                        toggle.innerHTML = '➕';
+                    }
+                });
+
+                expand.style.display = 'none';
+            });
+        }
+
+        document.querySelectorAll('.month-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const month = parseInt(this.getAttribute('data-month'));
+                renderWeeks(month);
+            });
+        });
+
+        renderWeeks(1);
+    })();
+</script>
+</body>
+</html>
