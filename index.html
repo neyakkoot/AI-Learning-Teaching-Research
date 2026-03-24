@@ -82,7 +82,7 @@
             color: #1e3b4f;
             padding: 12px 25px;
             border-radius: 50px;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
@@ -96,7 +96,7 @@
             color: #ffd58c;
             padding: 12px 25px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin: 10px 0;
             border-left: 10px solid #f0b843;
             display: flex;
@@ -457,15 +457,21 @@
             
             <!-- பயிற்றுநர் விவரங்கள் (புதியது) -->
             <div class="trainer-info">
-                <!-- பயிற்றுநர் பெயர் -->
+                <!-- பயிற்றுநர் பெயர் - பெரிய எழுத்து -->
                 <div class="advisor-chip">
                     <i class="fas fa-crown"></i> 
-                    பயிற்றுநர்: முனைவர் சத்தியராஜ் தங்கச்சாமி கல்.இ., க.மு. (தமிழ்), க.மு. (மொழியியல்), ஆ.நி., த.ப.ப., பர்., (நேயக்கோ)
+                    பயிற்றுநர்: முனைவர் சத்தியராஜ் தங்கச்சாமி (நேயக்கோ)
                 </div>
                 
-                <!-- பட்டங்கள் -->
+                <!-- பட்டங்கள் - சிறிய எழுத்து -->
                 <div class="qualification-box">
                     <i class="fas fa-graduation-cap"></i> 
+                    கல்.இ., க.மு. (தமிழ்), க.மு. (மொழியியல்), ஆ.நி., த.ப.ப., பர்.,
+                </div>
+                
+                <!-- ஆங்கிலக் குறிப்பு -->
+                <div class="qualification-box">
+                    <i class="fas fa-scroll"></i> 
                     Dr. Sathiyaraj Thangasamy (Neyakkoo) B.Lit., M.A. (Tamil), M.A. (Linguistics), M.Phil., TPT., Ph.D., NET.,
                 </div>
                 
@@ -667,62 +673,102 @@
         ];
 
         // ========== ஒவ்வொரு நாளுக்கும் குறிப்பிட்ட காணொலி விரிவுரை உரலிகளை இணைக்கும் செயல்பாடு ==========
+        // நாள் 1 முதல் 60 வரை முழுமையாக அமைக்கப்பட்டுள்ளது
         function getVideoLink(weekNum, dayIdx) {
-            // வாரம் 1 - முதல் மாதம் (கற்றல்)
-            if (weekNum === 1) {
-                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/1-introduction-to-artificial.html";
-                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/2-ai-tools-accounts.html";
-                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/3-prompt-engineering-basics.html";
-                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/4-role-playing-context-setting.html";
-                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/5-ai-in-my-field-discussion.html";
-            }
+            // மொத்த நாள் எண்ணைக் கணக்கிடுதல் (வாரம் 1-12, நாள் 1-5)
+            // நாள் 1 = 0, நாள் 2 = 1, ... நாள் 60 = 59
+            const totalDayIndex = (weekNum - 1) * 5 + dayIdx;
             
-            // வாரம் 2 - Prompt Engineering
-            if (weekNum === 2) {
-                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/week2-day1-clear-prompts.html";
-                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/week2-day2-context-constraints.html";
-                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/week2-day3-chain-of-thought.html";
-                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/week2-day4-compare-ai-responses.html";
-                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/week2-day5-simplify-complex-ideas.html";
-            }
+            // நாள் 1 முதல் 60 வரையிலான காணொலி இணைப்புகள்
+            const videoLinks = {
+                // வாரம் 1 - நாட்கள் 1-5 (0-4)
+                0: "https://meyveendu.blogspot.com/2026/04/1-introduction-to-artificial.html",
+                1: "https://meyveendu.blogspot.com/2026/04/2-ai-tools-accounts.html",
+                2: "https://meyveendu.blogspot.com/2026/04/3-prompt-engineering-basics.html",
+                3: "https://meyveendu.blogspot.com/2026/04/4-role-playing-context-setting.html",
+                4: "https://meyveendu.blogspot.com/2026/04/5-ai-in-my-field-discussion.html",
+                
+                // வாரம் 2 - நாட்கள் 6-10 (5-9)
+                5: "https://meyveendu.blogspot.com/2026/04/6-clear-prompts-techniques.html",
+                6: "https://meyveendu.blogspot.com/2026/04/7-context-setting-constraints.html",
+                7: "https://meyveendu.blogspot.com/2026/04/8-chain-of-thought-prompting.html",
+                8: "https://meyveendu.blogspot.com/2026/04/9-compare-ai-responses.html",
+                9: "https://meyveendu.blogspot.com/2026/04/10-simplify-complex-ideas.html",
+                
+                // வாரம் 3 - நாட்கள் 11-15 (10-14)
+                10: "https://meyveendu.blogspot.com/2026/04/11-ai-as-personal-tutor.html",
+                11: "https://meyveendu.blogspot.com/2026/04/12-summarize-youtube-articles.html",
+                12: "https://meyveendu.blogspot.com/2026/04/13-ask-doubts-to-ai.html",
+                13: "https://meyveendu.blogspot.com/2026/04/14-learn-difficult-topics.html",
+                14: "https://meyveendu.blogspot.com/2026/04/15-ai-note-taking.html",
+                
+                // வாரம் 4 - நாட்கள் 16-20 (15-19)
+                15: "https://meyveendu.blogspot.com/2026/04/16-notebooklm-introduction.html",
+                16: "https://meyveendu.blogspot.com/2026/04/17-qa-with-documents.html",
+                17: "https://meyveendu.blogspot.com/2026/04/18-audio-overview-podcast.html",
+                18: "https://meyveendu.blogspot.com/2026/04/19-combine-sources-research.html",
+                19: "https://meyveendu.blogspot.com/2026/04/20-notebooklm-research-papers.html",
+                
+                // வாரம் 5 - நாட்கள் 21-25 (20-24)
+                20: "https://meyveendu.blogspot.com/2026/04/21-obe-curriculum-design.html",
+                21: "https://meyveendu.blogspot.com/2026/04/22-course-objectives-los.html",
+                22: "https://meyveendu.blogspot.com/2026/04/23-12-week-syllabus-ai.html",
+                23: "https://meyveendu.blogspot.com/2026/04/24-evaluate-curriculum-critically.html",
+                24: "https://meyveendu.blogspot.com/2026/04/25-curriculum-design-practice.html",
+                
+                // வாரம் 6 - நாட்கள் 26-30 (25-29)
+                25: "https://meyveendu.blogspot.com/2026/04/26-powerpoint-content-ai.html",
+                26: "https://meyveendu.blogspot.com/2026/04/27-quiz-creation-ai.html",
+                27: "https://meyveendu.blogspot.com/2026/04/28-case-studies-ai.html",
+                28: "https://meyveendu.blogspot.com/2026/04/29-diagrams-examples-ai.html",
+                29: "https://meyveendu.blogspot.com/2026/04/30-teaching-styles-content.html",
+                
+                // வாரம் 7 - நாட்கள் 31-35 (30-34)
+                30: "https://meyveendu.blogspot.com/2026/04/31-automated-grading.html",
+                31: "https://meyveendu.blogspot.com/2026/04/32-rubrics-ai.html",
+                32: "https://meyveendu.blogspot.com/2026/04/33-feedback-ai.html",
+                33: "https://meyveendu.blogspot.com/2026/04/34-verify-ai-scores.html",
+                34: "https://meyveendu.blogspot.com/2026/04/35-ai-bias-discussion.html",
+                
+                // வாரம் 8 - நாட்கள் 36-40 (35-39)
+                35: "https://meyveendu.blogspot.com/2026/04/36-plagiarism-ai.html",
+                36: "https://meyveendu.blogspot.com/2026/04/37-ai-detectors.html",
+                37: "https://meyveendu.blogspot.com/2026/04/38-copyright-issues.html",
+                38: "https://meyveendu.blogspot.com/2026/04/39-data-privacy-ai.html",
+                39: "https://meyveendu.blogspot.com/2026/04/40-debate-ai-ban-or-allow.html",
+                
+                // வாரம் 9 - நாட்கள் 41-45 (40-44)
+                40: "https://meyveendu.blogspot.com/2026/04/41-elicit-consensus-tools.html",
+                41: "https://meyveendu.blogspot.com/2026/04/42-literature-review-prompts.html",
+                42: "https://meyveendu.blogspot.com/2026/04/43-collect-research-papers.html",
+                43: "https://meyveendu.blogspot.com/2026/04/44-summarize-research-papers.html",
+                44: "https://meyveendu.blogspot.com/2026/04/45-evaluate-ai-recommendations.html",
+                
+                // வாரம் 10 - நாட்கள் 46-50 (45-49)
+                45: "https://meyveendu.blogspot.com/2026/04/46-excel-formulas-ai.html",
+                46: "https://meyveendu.blogspot.com/2026/04/47-python-code-ai.html",
+                47: "https://meyveendu.blogspot.com/2026/04/48-data-analysis-ai.html",
+                48: "https://meyveendu.blogspot.com/2026/04/49-charts-ai.html",
+                49: "https://meyveendu.blogspot.com/2026/04/50-statistics-ai.html",
+                
+                // வாரம் 11 - நாட்கள் 51-55 (50-54)
+                50: "https://meyveendu.blogspot.com/2026/04/51-abstract-writing-ai.html",
+                51: "https://meyveendu.blogspot.com/2026/04/52-translation-ai.html",
+                52: "https://meyveendu.blogspot.com/2026/04/53-citation-management-ai.html",
+                53: "https://meyveendu.blogspot.com/2026/04/54-paraphrasing-ai.html",
+                54: "https://meyveendu.blogspot.com/2026/04/55-research-report-ai.html",
+                
+                // வாரம் 12 - நாட்கள் 56-60 (55-59)
+                55: "https://meyveendu.blogspot.com/2026/04/56-quantum-computing-basics.html",
+                56: "https://meyveendu.blogspot.com/2026/04/57-quantum-ai-applications.html",
+                57: "https://meyveendu.blogspot.com/2026/04/58-ibm-quantum-experience.html",
+                58: "https://meyveendu.blogspot.com/2026/04/59-quantum-future-impact.html",
+                59: "https://meyveendu.blogspot.com/2026/04/60-ai-future-essay.html"
+            };
             
-            // வாரம் 3 - AI உதவியுடன் கற்றல்
-            if (weekNum === 3) {
-                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/week3-day1-ai-as-personal-tutor.html";
-                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/week3-day2-summarize-youtube-articles.html";
-                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/week3-day3-ask-doubts-to-ai.html";
-                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/week3-day4-learn-difficult-topics.html";
-                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/week3-day5-ai-note-taking.html";
-            }
-            
-            // வாரம் 4 - NotebookLM
-            if (weekNum === 4) {
-                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/week4-day1-notebooklm-intro.html";
-                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/week4-day2-qa-with-documents.html";
-                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/week4-day3-audio-overview.html";
-                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/week4-day4-combine-sources.html";
-                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/week4-day5-notebooklm-research.html";
-            }
-            
-            // வாரம் 5 முதல் 12 வரை YouTube தேடல் இணைப்புகள் (மாற்றாக)
-            const baseURL = "https://www.youtube.com/results?search_query=";
-            const searchTerms = [
-                "obe+curriculum+design+ai+tamil",
-                "ai+for+teaching+tamil",
-                "ai+assessment+grading+tamil",
-                "ai+ethics+plagiarism+tamil",
-                "ai+literature+review+tamil",
-                "data+analysis+ai+tamil",
-                "ai+research+writing+tamil",
-                "quantum+computing+ai+tamil"
-            ];
-            
-            // வாரம் 5 முதல் 12 வரை
-            if (weekNum >= 5 && weekNum <= 12) {
-                const index = weekNum - 5;
-                if (index < searchTerms.length) {
-                    return baseURL + searchTerms[index];
-                }
+            // இணைப்பு உள்ளதா எனச் சரிபார்த்து, இல்லையெனில் YouTube தேடலுக்குச் செல்லுதல்
+            if (videoLinks[totalDayIndex]) {
+                return videoLinks[totalDayIndex];
             }
             
             // இயல்புநிலை YouTube தேடல்
@@ -785,9 +831,11 @@
                     const dayBox = document.createElement('div');
                     dayBox.className = 'day-box';
                     const videoURL = getVideoLink(globalWeekNum, d);
+                    // மொத்த நாள் எண்ணைக் கணக்கிடுதல் (1 முதல் 60 வரை)
+                    const globalDayNum = (globalWeekNum - 1) * 5 + d + 1;
                     
                     dayBox.innerHTML = `
-                        <h4><i class="fas fa-robot"></i> நாள் ${d+1}</h4>
+                        <h4><i class="fas fa-robot"></i> நாள் ${globalDayNum}</h4>
                         <ul><li><i class="fas fa-check-circle" style="color:#1e5a7a;"></i> ${w.days[d]}</li></ul>
                         <a href="${videoURL}" target="_blank" class="day-video-btn"><i class="fas fa-video"></i> காணொலி & பயிற்சி</a>
                     `;
