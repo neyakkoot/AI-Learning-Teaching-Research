@@ -449,7 +449,7 @@
     <div class="hero-section">
         <div class="hero-content">
             <div class="hero-main-title">
-                <i class="fas-robot"></i> செயற்கை நுண்ணறிவுக் கருவிகளின் பயன்பாடு
+                <i class="fas fa-robot"></i> செயற்கை நுண்ணறிவுக் கருவிகளின் பயன்பாடு
             </div>
             <div class="hero-sub-title">
                 <i class="fas fa-calendar-alt"></i> 3 மாதங்கள் · 12 வாரங்கள் · வாரத்திற்கு 3 மணிநேரம்
@@ -666,13 +666,47 @@
             }
         ];
 
+        // ========== ஒவ்வொரு நாளுக்கும் குறிப்பிட்ட காணொலி விரிவுரை உரலிகளை இணைக்கும் செயல்பாடு ==========
         function getVideoLink(weekNum, dayIdx) {
+            // வாரம் 1 - முதல் மாதம் (கற்றல்)
+            if (weekNum === 1) {
+                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/1-introduction-to-artificial.html";
+                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/2-ai-tools-accounts.html";
+                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/3-prompt-engineering-basics.html";
+                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/4-role-playing-context-setting.html";
+                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/5-ai-in-my-field-discussion.html";
+            }
+            
+            // வாரம் 2 - Prompt Engineering
+            if (weekNum === 2) {
+                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/week2-day1-clear-prompts.html";
+                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/week2-day2-context-constraints.html";
+                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/week2-day3-chain-of-thought.html";
+                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/week2-day4-compare-ai-responses.html";
+                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/week2-day5-simplify-complex-ideas.html";
+            }
+            
+            // வாரம் 3 - AI உதவியுடன் கற்றல்
+            if (weekNum === 3) {
+                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/week3-day1-ai-as-personal-tutor.html";
+                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/week3-day2-summarize-youtube-articles.html";
+                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/week3-day3-ask-doubts-to-ai.html";
+                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/week3-day4-learn-difficult-topics.html";
+                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/week3-day5-ai-note-taking.html";
+            }
+            
+            // வாரம் 4 - NotebookLM
+            if (weekNum === 4) {
+                if (dayIdx === 0) return "https://meyveendu.blogspot.com/2026/04/week4-day1-notebooklm-intro.html";
+                if (dayIdx === 1) return "https://meyveendu.blogspot.com/2026/04/week4-day2-qa-with-documents.html";
+                if (dayIdx === 2) return "https://meyveendu.blogspot.com/2026/04/week4-day3-audio-overview.html";
+                if (dayIdx === 3) return "https://meyveendu.blogspot.com/2026/04/week4-day4-combine-sources.html";
+                if (dayIdx === 4) return "https://meyveendu.blogspot.com/2026/04/week4-day5-notebooklm-research.html";
+            }
+            
+            // வாரம் 5 முதல் 12 வரை YouTube தேடல் இணைப்புகள் (மாற்றாக)
             const baseURL = "https://www.youtube.com/results?search_query=";
             const searchTerms = [
-                "ai+introduction+tamil",
-                "prompt+engineering+tutorial+tamil",
-                "ai+for+learning+tamil",
-                "notebooklm+tutorial+tamil",
                 "obe+curriculum+design+ai+tamil",
                 "ai+for+teaching+tamil",
                 "ai+assessment+grading+tamil",
@@ -683,9 +717,15 @@
                 "quantum+computing+ai+tamil"
             ];
             
-            if (weekNum >= 1 && weekNum <= searchTerms.length) {
-                return baseURL + searchTerms[weekNum-1];
+            // வாரம் 5 முதல் 12 வரை
+            if (weekNum >= 5 && weekNum <= 12) {
+                const index = weekNum - 5;
+                if (index < searchTerms.length) {
+                    return baseURL + searchTerms[index];
+                }
             }
+            
+            // இயல்புநிலை YouTube தேடல்
             return "https://www.youtube.com/results?search_query=ai+tools+tamil";
         }
 
